@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.androidplot.pie.PieChart
+        android:id="@+id/GraficoPastel"
+        androidPlot.title.labelPaint.textSize="@dimen/title_font_size"
+        androidPlot.title.text="Distribución del Gasto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="@string/tama_o_del_gr_fico"
+            android:id="@+id/TamanoGrafico"/>
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:max="90"
+            android:progress="50"
+            android:id="@+id/BarraTamanoGrafico"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="@string/unknown"
+            android:id="@+id/lblTamano"/>
+    </LinearLayout>
+</LinearLayout>

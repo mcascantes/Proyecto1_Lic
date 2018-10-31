@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Estadisticas"
+        android:icon="@drawable/ic_estadistica_64dp"
+        android:title="Estadisticas"
+        app:actionProviderClass="android.support.v7.app.MediaRouteActionProvider"
+        app:showAsAction="ifRoom"
+        tools:icon="@drawable/ic_estadistica_64dp" />
+    <item
+        android:id="@+id/Guardar"
+        android:icon="@drawable/ic_save_black_64dp"
+        android:title="Guardar"
+        app:actionProviderClass="android.support.v7.app.MediaRouteActionProvider"
+        app:showAsAction="ifRoom" />
+</menu>

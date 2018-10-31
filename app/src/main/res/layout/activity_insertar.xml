@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,21 +9,37 @@
     android:orientation="vertical"
     tools:context=".InsertarActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolInsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize" />
+
+    <EditText
+        android:id="@+id/TxtCedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cedula: formato 101110111"
+        android:inputType="number" />
+
     <EditText
         android:id="@+id/TxtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nombre" />
+        android:hint="Inserte su Nombre"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/TxtApellidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Apellidos" />
+        android:hint="Ingrese sus Apellidos"
+        android:inputType="textPersonName" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,34 +48,30 @@
 
         <Spinner
             android:id="@+id/spSelector"
-            android:layout_width="match_parent"
+            android:layout_width="354dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:entries="@array/gasto_ingreso"
+            android:paddingBottom="13dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/BtnAgregar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Agregar" />
+            android:background="@drawable/buttonshape"
+            android:drawableLeft="@drawable/ic_loupe_black_24dp"
+            android:drawableStart="@drawable/ic_loupe_black_24dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Agregar"
+            android:textColor="@color/appWhite" />
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="18sp"
-        tools:text="Filtrar" />
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="match_parent"
-        android:layout_height="35dp" />
 
     <ListView
         android:id="@+id/Lista_gasto_ingreso"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

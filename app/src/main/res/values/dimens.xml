@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="title_font_size">20sp</dimen>
+    <dimen name="pie_segment_label_font_size">18sp</dimen>
 </resources>

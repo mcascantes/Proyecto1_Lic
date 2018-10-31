@@ -2,7 +2,6 @@ package com.lic.prgra.proyecto1;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class UsuariosAdapter extends BaseAdapter{
+public class IngresoGastoAdapter extends BaseAdapter {
     private Activity activity;
-    private ArrayList<Usuarios> data=null;
+    private ArrayList<Ingreso_Gasto> data=null;
     private static LayoutInflater inflater =null;
 
-    public UsuariosAdapter(Activity activity, ArrayList<Usuarios> data) {
+    public IngresoGastoAdapter(Activity activity, ArrayList<Ingreso_Gasto> data) {
         this.activity = activity;
         this.data = data;
         inflater =(LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -29,12 +27,6 @@ public class UsuariosAdapter extends BaseAdapter{
 
         return (data == null) ? 0 : data.size();
 
-    }
-
-    public void updateUsuarioList(ArrayList<Usuarios> newlist) {
-        data.clear();
-        data.addAll(newlist);
-        this.notifyDataSetChanged();
     }
 
     @Override
@@ -49,15 +41,17 @@ public class UsuariosAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       View vi= convertView;
-       if(convertView == null)
-           vi=inflater.inflate(R.layout.lista_item,null);
+        View vi= convertView;
+        if(convertView == null)
+            vi=inflater.inflate(R.layout.lista_ingreso_gasto,null);
 
-        TextView titulo=vi.findViewById(R.id.titulo);
-        TextView liquidez=vi.findViewById(R.id.liquidez);
+        TextView Concepto=vi.findViewById(R.id.TxtConcepto);
+        TextView Tipo=vi.findViewById(R.id.TxtTipo);
+        TextView Monto=vi.findViewById(R.id.TxtMonto);
 
-        titulo.setText(data.get(position).Nombre + " " + data.get(position).Apellidos);
-        liquidez.setText("Liquidez " + String.valueOf(data.get(position).Liquidez));
+        Concepto.setText(data.get(position).Concepto);
+        Tipo.setText(data.get(position).Tipo);
+        Monto.setText("₡"+String.valueOf(data.get(position).Monto));
 
 
 

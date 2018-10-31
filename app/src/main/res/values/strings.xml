@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Proyecto1</string>
     <string name="action_settings">Settings</string>
+    <string name="unknown">unknown</string>
+    <string name="tama_o_del_gr_fico">Tamaño del Gráfico</string>
+
+    <string-array name="gasto_ingreso">
+
+        <item>Ingreso</item>
+        <item>Gasto</item>
+    </string-array>
+
+    <string-array name="gastos">
+
+        <item>Alimentación</item>
+        <item>Alquiler o Vivienda</item>
+        <item>Combustible</item>
+        <item>Agua</item>
+        <item>Luz</item>
+        <item>Internet y Cable</item>
+        <item>Teléfono</item>
+        <item>Entretenimiento</item>
+        <item>Vestimenta</item>
+        <item>Imprevistos</item>
+    </string-array>
 </resources>

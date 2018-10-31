@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InsertarActivity"></activity>
+        <activity android:name=".InsertarActivity" />
+        <activity android:name=".EstadisticaActivity"></activity>
     </application>
 
 </manifest>

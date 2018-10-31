@@ -1,21 +1,26 @@
 package com.lic.prgra.proyecto1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class PrincipalActivity extends AppCompatActivity {
 
     ListView lista;
-    public ArrayList<Usuarios> Users=null;
+    ArrayList<Usuarios> Users;
+    UsuariosAdapter Uadapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +28,57 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
 
         lista=findViewById(R.id.Lista);
+
+        if(Users ==null)
+        {
+            Users=new ArrayList<Usuarios>();
+        }
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent IA = new Intent(PrincipalActivity.this, InsertarActivity.class);
+                startActivityForResult(IA, 1);
+
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
 
-        UsuariosAdapter Uadapter=new UsuariosAdapter(this, Users);
+        Uadapter=new UsuariosAdapter(this, Users);
         lista.setAdapter(Uadapter);
+        Uadapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (lista!= null) {
+            lista.invalidateViews();
+        }
+        Uadapter.notifyDataSetChanged();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                Bundle U=data.getExtras();
+                Usuarios users=U.getParcelable("Usuario");
+
+                Users.add(users);
+                Uadapter.notifyDataSetChanged();
+
+
+            }
+        }
     }
 
     @Override
