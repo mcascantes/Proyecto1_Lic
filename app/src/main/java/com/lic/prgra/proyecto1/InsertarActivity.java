@@ -110,7 +110,7 @@ public class InsertarActivity extends AppCompatActivity {
                     if(_Cedula.getText().toString().isEmpty() || _Nombre.getText().toString().isEmpty() ||
                             _Apellidos.getText().toString().isEmpty())
                     {
-                        Alerta("Error","Cedula, Nombre o Aellidos no poeden ser vacios");
+                        Alerta("Error","Cedula, Nombre o Apellidos no pueden ser vacios");
 
                     }else {
                         switch (valor) {

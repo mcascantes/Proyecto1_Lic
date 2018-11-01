@@ -120,7 +120,8 @@ public class PrincipalActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent A=new Intent(PrincipalActivity.this,AcercaDeActivity.class);
+            startActivity(A);
         }
 
         return super.onOptionsItemSelected(item);

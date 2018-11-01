@@ -4,7 +4,8 @@
     tools:context="com.lic.prgra.proyecto1.PrincipalActivity">
     <item
         android:id="@+id/action_settings"
+        android:icon="@drawable/ic_info_black_64dp"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="acerca_de"
+        app:showAsAction="ifRoom" />
 </menu>

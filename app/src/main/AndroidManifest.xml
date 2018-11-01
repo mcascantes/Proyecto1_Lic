@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".InsertarActivity" />
-        <activity android:name=".EstadisticaActivity"></activity>
+        <activity android:name=".EstadisticaActivity" />
+        <activity android:name=".AcercaDeActivity"></activity>
     </application>
 
 </manifest>
