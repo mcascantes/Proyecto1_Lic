@@ -135,6 +135,7 @@ public class EstadisticaActivity extends AppCompatActivity {
         pie.addSegment(s2, sf2);
         pie.addSegment(s3, sf3);
         pie.addSegment(s4, sf4);*/
+       pie.clear();
 
         EmbossMaskFilter emf = new EmbossMaskFilter(
                 new float[]{1, 1, 1}, 0.4f, 10, 8.2f);
@@ -146,7 +147,7 @@ public class EstadisticaActivity extends AppCompatActivity {
             sf.getLabelPaint().setShadowLayer(3, 0, 0, Color.BLACK);
             sf.getFillPaint().setMaskFilter(emf);
 
-            Segment s=new Segment(entry.getKey(),Porcentaje(hashMap,Double.parseDouble(entry.getValue())));
+            Segment s=new Segment(entry.getKey(),Porcentaje(hashMap,Float.parseFloat(entry.getValue())));
             pie.addSegment(s,sf);
 
         }
@@ -155,6 +156,12 @@ public class EstadisticaActivity extends AppCompatActivity {
         pie.getBackgroundPaint().setColor(Color.TRANSPARENT);
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
     }
 
     private double Porcentaje(HashMap<String,String> h,double valor)

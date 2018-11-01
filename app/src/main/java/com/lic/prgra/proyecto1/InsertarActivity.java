@@ -38,6 +38,7 @@ public class InsertarActivity extends AppCompatActivity {
 
     Usuarios U = new Usuarios();
     IngresoGastoAdapter adapter;
+    String posicion="";
 
 
     double _liquidez=0,_gastos=0,_ingresos=0;
@@ -79,8 +80,22 @@ public class InsertarActivity extends AppCompatActivity {
         //ListView
         _Lista=findViewById(R.id.Lista_gasto_ingreso);
 
+        Intent intent = getIntent();
+        Bundle User = intent.getExtras();
+        if(User != null)
+        {
+            U =  User.getParcelable("Usuario");
+            posicion=User.getString("index");
+            //Alerta("Info","Recibio Posicion " + posicion);
+            CargarDatos(U);
+
+        }
+
+
         adapter=new IngresoGastoAdapter(this,IG);
         _Lista.setAdapter(adapter);
+
+
 
 
 
@@ -119,7 +134,16 @@ public class InsertarActivity extends AppCompatActivity {
 
     }
 
+     private void CargarDatos(Usuarios Us)
+     {
 
+         _Cedula.setText(Us.Cedula);
+         _Nombre.setText(Us.Nombre);
+         _Apellidos.setText(Us.Apellidos);
+         IG=Us.getIngreso_Gasto();
+         U.Ingreso_Gasto=Us.Ingreso_Gasto;
+
+     }
 
     private void MostrarGasto()
     {
@@ -241,6 +265,7 @@ public class InsertarActivity extends AppCompatActivity {
         U.Apellidos=_Apellidos.getText().toString();
         Intent MA = new Intent();
         MA.putExtra("Usuario",U);
+        MA.putExtra("index",posicion);
         setResult(RESULT_OK,MA);
         finish();
 
@@ -319,16 +344,21 @@ public class InsertarActivity extends AppCompatActivity {
             if(IG.size()!=0) {
                 HashMap<String, String> arrayMap = new HashMap<>();
                 for (int i = 0; i < IG.size(); i++) {
-                    if (IG.get(i).Tipo == "Gasto") {
+                    if (IG.get(i).Tipo.equals("Gasto")) {
                         arrayMap.put(IG.get(i).Concepto, String.valueOf(IG.get(i).Monto));
                     }
                 }
+                if(!arrayMap.isEmpty()) {
 
-                Intent E = new Intent(InsertarActivity.this, EstadisticaActivity.class);
-                E.putExtra("Gastos", arrayMap);
-                startActivity(E);
+                    Intent E = new Intent(InsertarActivity.this, EstadisticaActivity.class);
+                    E.putExtra("Gastos", arrayMap);
+                    startActivity(E);
+                }else
+                {
+                    Alerta("Error", "No hay Gastos");
+                }
             }else{
-                Toast.makeText(c, "No Existen Gastos para Mostrar", Toast.LENGTH_SHORT).show();
+                Alerta("Error", "No hay Gastos");
             }
         }
 

@@ -1,5 +1,6 @@
 package com.lic.prgra.proyecto1;
-
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -11,11 +12,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class UsuariosAdapter extends BaseAdapter{
     private Activity activity;
     private ArrayList<Usuarios> data=null;
     private static LayoutInflater inflater =null;
+    NumberFormat format = new DecimalFormat("###,###,##0.00");
 
     public UsuariosAdapter(Activity activity, ArrayList<Usuarios> data) {
         this.activity = activity;
@@ -57,7 +60,7 @@ public class UsuariosAdapter extends BaseAdapter{
         TextView liquidez=vi.findViewById(R.id.liquidez);
 
         titulo.setText(data.get(position).Nombre + " " + data.get(position).Apellidos);
-        liquidez.setText("Liquidez " + String.valueOf(data.get(position).Liquidez));
+        liquidez.setText("Liquidez ₡" + String.valueOf(format.format(data.get(position).Liquidez)));
 
 
 

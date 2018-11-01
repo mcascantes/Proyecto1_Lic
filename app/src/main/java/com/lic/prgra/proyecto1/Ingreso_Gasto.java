@@ -4,6 +4,9 @@ package com.lic.prgra.proyecto1;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Ingreso_Gasto implements Parcelable {
     String Tipo;
     String Concepto;
@@ -70,19 +73,19 @@ public class Ingreso_Gasto implements Parcelable {
     };
     public String[] DeduccionesLey(double MontoBruto){
 
-
+        NumberFormat format = new DecimalFormat("###,###,##0.00");
         double ENFERMEDAD_MATERNIDAD=MontoBruto * 0.055;
         double IVM=MontoBruto * 0.0384;
         double FOP=MontoBruto * 0.01;
         double Total_Deducciones= ENFERMEDAD_MATERNIDAD + IVM + FOP + Renta(MontoBruto);
         double Liquidez=MontoBruto - Total_Deducciones;
 
-        String Desglose= "Enfermedad y Maternidad 5.5%: ₡" + ENFERMEDAD_MATERNIDAD +
-                         "\nInvalidez y Muerte 3.84%: ₡" + IVM +
-                         "\nFondo de Pensiones 1%: ₡" + FOP +
-                         "\nRenta: ₡" + Renta(MontoBruto) +
-                         "\n\nTOTAL DEDUCCIONES: ₡" + Total_Deducciones +
-                         "\n\nSALARIO NETO: ₡" + Liquidez;
+        String Desglose= "Enfermedad y Maternidad 5.5%: ₡" + format.format(ENFERMEDAD_MATERNIDAD) +
+                         "\nInvalidez y Muerte 3.84%: ₡" + format.format(IVM) +
+                         "\nFondo de Pensiones 1%: ₡" + format.format(FOP) +
+                         "\nRenta: ₡" + format.format(Renta(MontoBruto)) +
+                         "\n\nTOTAL DEDUCCIONES: ₡" + format.format(Total_Deducciones) +
+                         "\n\nSALARIO NETO: ₡" + format.format(Liquidez);
         String[] valores={Desglose,String.valueOf(Liquidez)};
 
         return valores;

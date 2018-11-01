@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ public class PrincipalActivity extends AppCompatActivity {
             Users=new ArrayList<Usuarios>();
         }
 
+        //Toast.makeText(this, "Cantidad de Usuarios= " + Users.size() , Toast.LENGTH_SHORT).show();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +58,16 @@ public class PrincipalActivity extends AppCompatActivity {
         lista.setAdapter(Uadapter);
         Uadapter.notifyDataSetChanged();
 
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent IA = new Intent(PrincipalActivity.this, InsertarActivity.class);
+                IA.putExtra("Usuario",Users.get(position));
+                IA.putExtra("index",String.valueOf(position));
+                startActivityForResult(IA, 1);
+            }
+        });
+
     }
 
     @Override
@@ -66,14 +79,24 @@ public class PrincipalActivity extends AppCompatActivity {
         Uadapter.notifyDataSetChanged();
     }
 
+
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 Bundle U=data.getExtras();
                 Usuarios users=U.getParcelable("Usuario");
+                String posicion=U.getString("index");
 
-                Users.add(users);
+                //Toast.makeText(this, "RECIBIO POSICION " + posicion, Toast.LENGTH_SHORT).show();
+                if(!posicion.isEmpty() )
+                {
+                    int index= Integer.parseInt(posicion);
+                    Users.set(index,users);
+                }else{
+                    Users.add(users);
+                }
                 Uadapter.notifyDataSetChanged();
 
 

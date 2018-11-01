@@ -8,12 +8,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class IngresoGastoAdapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<Ingreso_Gasto> data=null;
     private static LayoutInflater inflater =null;
+    NumberFormat format = new DecimalFormat("###,###,##0.00");
 
     public IngresoGastoAdapter(Activity activity, ArrayList<Ingreso_Gasto> data) {
         this.activity = activity;
@@ -51,7 +54,7 @@ public class IngresoGastoAdapter extends BaseAdapter {
 
         Concepto.setText(data.get(position).Concepto);
         Tipo.setText(data.get(position).Tipo);
-        Monto.setText("₡"+String.valueOf(data.get(position).Monto));
+        Monto.setText("₡"+ String.valueOf(format.format(data.get(position).Monto)));
 
 
 
